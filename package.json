@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack serve --config webpack.config.dev.js --port 3000"
+    "start": "webpack serve --config webpack.config.dev.js --port 3000",
+    "prestart:api": "node tools/createMockDb",
+    "start:api": "node tools/apiServer.js"
   },
   "keywords": [],
   "author": "Md Shahid Hussain",

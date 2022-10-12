@@ -1,0 +1,20 @@
+.course-list {
+	display: grid;
+	grid-template-columns: 0.5fr 1.5fr 0.5fr 1fr;
+	grid-auto-flow: column;
+	border-bottom: 0.5px solid gray;
+}
+.course-list .item {
+	text-align: left;
+}
+.course-list .item-3 {
+	text-align: left;
+	padding-right: 30px;
+	padding-left: 30px;
+}
+.course-list .item-dot {
+	font-size: 0px;
+}
+.course-list-header {
+	border-top: 0.5px solid gray;
+}

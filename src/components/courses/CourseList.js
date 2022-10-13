@@ -16,7 +16,7 @@ const CourseList = ({ courses }) => {
 						<li className="course-list" key={course.id}>
 							<p className="item">Watch</p>
 							<p className="item">{course.title}</p>
-							<p className="item-3">{course.authorId}</p>
+							<p className="item-3">{course.authorName}</p>
 							<p className="item">{course.category}</p>
 						</li>
 					);

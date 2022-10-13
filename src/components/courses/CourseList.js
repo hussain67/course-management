@@ -1,5 +1,7 @@
 import React from "react";
-
+import PropTypes from "prop-types";
+import { NavLink } from "react-router-dom";
+let path = "/course";
 const CourseList = ({ courses }) => {
 	console.log(courses);
 	return (
@@ -15,7 +17,9 @@ const CourseList = ({ courses }) => {
 					return (
 						<li className="course-list" key={course.id}>
 							<p className="item">Watch</p>
-							<p className="item">{course.title}</p>
+							<p className="item">
+								<NavLink to="/course">{course.title}</NavLink>
+							</p>
 							<p className="item-3">{course.authorName}</p>
 							<p className="item">{course.category}</p>
 						</li>
@@ -25,5 +29,7 @@ const CourseList = ({ courses }) => {
 		</>
 	);
 };
-
+CourseList.propTypes = {
+	courses: PropTypes.array.isRequired
+};
 export default CourseList;

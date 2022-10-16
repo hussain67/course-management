@@ -6,10 +6,12 @@ import PropTypes from "prop-types";
 import CourseForm from "./CourseForm";
 import { newCourse } from "../../../tools/mockData";
 import Spinner from "../common/Spinner";
+import { toast } from "react-toastify";
 
 const ManageCoursePage = ({ courses, authors, loadAuthors, loadCourses, saveCourse, history, ...props }) => {
 	const [course, setCourse] = useState({ ...props.course });
 	const [errors, setErrors] = useState({});
+	const [saving, setSaving] = useState(false);
 
 	useEffect(() => {
 		if (courses.length === 0) {
@@ -38,13 +40,23 @@ const ManageCoursePage = ({ courses, authors, loadAuthors, loadCourses, saveCour
 
 	function handleSave(event) {
 		event.preventDefault();
+		setSaving(true);
 		//Call to the saveCourse thunk return a promise hence .then can be chained
 		//Any component rendered through react-router-dom, history object automatically get pussed in
-		saveCourse(course).then(() => {
-			history.push("/courses");
-		});
+		saveCourse(course)
+			.then(() => {
+				toast.success("Course Saved");
+				history.push("/courses");
+			})
+			.catch(error => {
+				setSaving(false);
+				console.log(error);
+				setErrors({ onSave: error.message });
+			});
+
+		// We do not need to set saving to false, we are redirecting to another page
 	}
-	return authors.length === 0 || courses.length === 0 ? <Spinner /> : <CourseForm course={course} errors={errors} authors={authors} onChange={handleChange} onSave={handleSave} />;
+	return authors.length === 0 || courses.length === 0 ? <Spinner /> : <CourseForm course={course} errors={errors} authors={authors} onChange={handleChange} onSave={handleSave} saving={saving} />;
 };
 
 ManageCoursePage.propTypes = {

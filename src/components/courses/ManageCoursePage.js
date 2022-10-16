@@ -5,6 +5,7 @@ import { loadAuthors } from "../../redux/actions/authorActions";
 import PropTypes from "prop-types";
 import CourseForm from "./CourseForm";
 import { newCourse } from "../../../tools/mockData";
+import Spinner from "../common/Spinner";
 
 const ManageCoursePage = ({ courses, authors, loadAuthors, loadCourses, saveCourse, history, ...props }) => {
 	const [course, setCourse] = useState({ ...props.course });
@@ -25,6 +26,7 @@ const ManageCoursePage = ({ courses, authors, loadAuthors, loadCourses, saveCour
 			});
 		}
 	}, [props.course]);
+
 	function handleChange(event) {
 		const { name, value } = event.target; //It is important to destructure
 
@@ -42,7 +44,7 @@ const ManageCoursePage = ({ courses, authors, loadAuthors, loadCourses, saveCour
 			history.push("/courses");
 		});
 	}
-	return <CourseForm course={course} errors={errors} authors={authors} onChange={handleChange} onSave={handleSave} />;
+	return authors.length === 0 || courses.length === 0 ? <Spinner /> : <CourseForm course={course} errors={errors} authors={authors} onChange={handleChange} onSave={handleSave} />;
 };
 
 ManageCoursePage.propTypes = {

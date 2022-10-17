@@ -1,6 +1,6 @@
 .course-list {
 	display: grid;
-	grid-template-columns: 0.5fr 1.5fr 0.7fr 1fr;
+	grid-template-columns: 0.5fr 1.5fr 0.7fr 1fr 0.5fr;
 	grid-auto-flow: column;
 	border-bottom: 0.5px solid gray;
 }
@@ -15,9 +15,14 @@
 .course-list .item-dot {
 	font-size: 0px;
 }
+
 .course-list-header {
 	border-top: 0.5px solid gray;
 }
 .course-form {
 	text-align: left;
+}
+.btn {
+	display: block;
+	width: 150px;
 }

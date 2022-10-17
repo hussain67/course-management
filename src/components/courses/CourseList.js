@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 let path = "/course";
-const CourseList = ({ courses }) => {
+const CourseList = ({ courses, onDeleteClick }) => {
 	console.log(courses);
 	return (
 		<>
@@ -12,6 +12,7 @@ const CourseList = ({ courses }) => {
 					<p className="item">Title</p>
 					<p className="item-3">Author</p>
 					<p className="item">Category</p>
+					<p className="item item-dot">.</p>
 				</li>
 				{courses.map(course => {
 					return (
@@ -22,6 +23,9 @@ const CourseList = ({ courses }) => {
 							</p>
 							<p className="item-3">{course.authorName}</p>
 							<p className="item">{course.category}</p>
+							<p className="btn btn-outline-danger" onClick={() => onDeleteClick(course)}>
+								Delete
+							</p>
 						</li>
 					);
 				})}
@@ -30,6 +34,7 @@ const CourseList = ({ courses }) => {
 	);
 };
 CourseList.propTypes = {
-	courses: PropTypes.array.isRequired
+	courses: PropTypes.array.isRequired,
+	onDeleteClick: PropTypes.func.isRequired
 };
 export default CourseList;

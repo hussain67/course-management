@@ -67,7 +67,18 @@ const ManageCoursePage = ({ courses, authors, loadAuthors, loadCourses, saveCour
 
 		// We do not need to set saving to false, we are redirecting to another page
 	}
-	return authors.length === 0 || courses.length === 0 ? <Spinner /> : <CourseForm course={course} errors={errors} authors={authors} onChange={handleChange} onSave={handleSave} saving={saving} />;
+	return authors.length === 0 || courses.length === 0 ? (
+		<Spinner />
+	) : (
+		<CourseForm
+			course={course}
+			errors={errors}
+			authors={authors}
+			onChange={handleChange}
+			onSave={handleSave}
+			saving={saving}
+		/>
+	);
 };
 
 ManageCoursePage.propTypes = {

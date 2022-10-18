@@ -1,6 +1,6 @@
 import * as types from "./actionTypes";
 import * as courseApi from "../../api/courseApi";
-import { beginApiCall, apiCallError } from "./apiStatusActions.Js";
+import { apiCallError, beginApiCall } from "./apiStatusActions";
 
 export function loadCourseSuccess(courses) {
 	return { type: types.LOAD_COURSES_SUCCESS, courses };
